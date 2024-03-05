@@ -7,7 +7,7 @@ a spiritual successor to my previous project [cellgame](https://github.com/andre
 ## Download
 Experience the jank for yourself:
 
-[Click to download](https://github.com/andrewiankidd/legacy-lua-fotd/releases/download/release/Fear%20of%20The%20Dark.zip)
+[Click to download](https://github.com/andrewiankidd/legacy-lua-fotd/releases/download/release/Fear.of.The.Dark.zip)
 
 ## Video
 
