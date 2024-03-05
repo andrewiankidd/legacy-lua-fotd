@@ -1,6 +1,6 @@
 # Fear of the Dark
 
-A game I was working on using C#/XNA, 2012ish
+A game I was working on using Lua + Love2D, 2011ish
 
 a spiritual successor to my previous project [cellgame](https://github.com/andrewiankidd/legacy-vb-cellgame) :)
 
