@@ -13,4 +13,4 @@ Experience the jank for yourself:
 
 Click to play
 
-[![screenshot](assets/screencap.gif)](https://www.youtube.com/watch?v=HPnTlvwlMUU)
+[![screenshot](assets/screenshot.png)](https://youtu.be/42uv4JNxzfo)
