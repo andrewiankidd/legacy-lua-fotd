@@ -1,0 +1,8 @@
+	
+2. support for signs, use the message system
+
+3. point and click support
+
+4. mapsmapsmaps
+
+999. just like make game

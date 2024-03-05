@@ -1,0 +1,1 @@
+npcscript = {"Hmm?", "What do you want?", "Go on!", "Get"}

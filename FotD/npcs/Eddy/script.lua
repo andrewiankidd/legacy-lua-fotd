@@ -1,0 +1,1 @@
+npcscript = {"It gets dark so early nowadays", "Winter must be coming..."}

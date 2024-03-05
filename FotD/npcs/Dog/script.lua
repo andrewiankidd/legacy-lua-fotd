@@ -1,0 +1,1 @@
+npcscript = {"Woof woof!", ""}

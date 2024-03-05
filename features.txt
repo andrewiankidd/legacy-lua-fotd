@@ -1,0 +1,31 @@
+objectives can be:-
+hasitem:itemname,goto:mapname,talkto:personame
+
+maps can be any size, camera will pan accordingly
+
+
+
+
+******************************
+*       FILE STRUCTURE       *
+******************************
+
+npcs can be added and modified dynamically
+/npc/npcname/script.lua   	--script, used for storing text and removeitem() if neccessary
+/npc/npcname/picture.png  	--picture to display
+/npc/npcname/sprite.png   	--overworld sprite
+
+mobs work similarly
+/mobs/mobname/sprite.png  	--sprite to use in battle
+/mobs/mobname/stats.lua   	--used to define mobs hp and attack damage
+
+maps are also dynamic, but slightly more complicated
+/maps/mapname/background.png 	--very lower layer of the map, used for most drawing
+/maps/mapname/collision.png	--second lowest, used to define warps and walkable land
+/maps/mapname/overlay.png	--used for effect only, upper halfs of objects
+/maps/mapname/map.lua		--used to define warps, which npcs, mobs and items to display
+
+items work in the same way
+/items/itemname/image.png	--item image
+/items/itemname/sprite.png	--item overworld sprite
+/items/itemname/stats.lua	--item sprite

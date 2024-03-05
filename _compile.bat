@@ -1,0 +1,1 @@
+lovedist.exe FotD "Fear of The Dark" -e -c -d
