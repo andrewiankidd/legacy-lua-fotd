@@ -2,6 +2,19 @@ require("AnAL")
 require("movement")
 local lastxpgain
 local lg = love.graphics
+--love2d 11.x compat: keep the old 0-255 colour calls working
+local _setColor = love.graphics.setColor
+function love.graphics.setColor(r,g,b,a)
+	_setColor(r/255,g/255,b/255,(a or 255)/255)
+end
+--table.maxn was removed in lua 5.2+, restore it if missing
+if not table.maxn then
+	function table.maxn(tbl)
+		local m=0
+		for k in pairs(tbl) do if type(k)=="number" and k>m then m=k end end
+		return m
+	end
+end
 local typed = {''}
 local editmode=false
 local t = {}
@@ -9,8 +22,8 @@ local t = {}
 function love.load()
 --set fps
 min_dt = 1/60
-next_time = love.timer.getMicroTime()
-winCreated = love.graphics.isCreated( )
+next_time = love.timer.getTime()
+winCreated = love.window.isOpen( )
 
 --fonts
 pixelfont = love.graphics.newImageFont("fonts/pixelfont.png"," abcdefghijklmnopqrstuvwxyz" .."ABCDEFGHIJKLMNOPQRSTUVWXYZ0" .."123456789.,!?-+/():;%&`'*#=[]\"")
@@ -26,7 +39,7 @@ twotrees36 = love.graphics.newFont("fonts/TwoTrees.ttf", 36)
 twotrees18 = love.graphics.newFont("fonts/TwoTrees.ttf", 18)
 
 programname = "Fear of the Dark"
-love.graphics.setCaption( programname )
+love.window.setTitle( programname )
 
 
 --game init var
@@ -54,8 +67,8 @@ mode  = 'stretch'
 font  = lg.newFont(20)
 res.set(mode,gw,gh,sw,sh)
 lg.setFont(font)
-lg.setMode(sw,sh)
-lg.setDefaultImageFilter('linear','nearest')
+love.window.setMode(sw,sh)
+lg.setDefaultFilter('linear','nearest')
 
 --mainmenu
 mainmenuindex = 1
@@ -80,7 +93,7 @@ optionsmenumax = table.maxn(optionsmenuentries)
 camefrom=nil
 
 --sound
-menubgm = love.audio.newSource("sound/fotd.ogg")
+menubgm = love.audio.newSource("sound/fotd.ogg","stream")
 
 --intro
 controlsimg = love.graphics.newImage("pictures/menu/controls.png")
@@ -237,7 +250,7 @@ function love.update(dt)
 	next_time = next_time + min_dt
 	
 	if gamemode == "menu" or gamemode== "gameoptions" or gamemode== "videomenu" or gamemode== "splash" or gamemode=="intro" then
-		if menubgm:isPaused() == true or menubgm:isStopped() == true then
+		if menubgm:isPlaying() == false then
 			love.audio.play(menubgm)
 			menubgm:setLooping(true)
 		end
@@ -292,12 +305,12 @@ function love.update(dt)
 		end
 	elseif gamemode=="loadscreen" then
 		if savedgames==nil then
-			sdirexists=love.filesystem.exists("saves")
+			sdirexists=love.filesystem.getInfo("saves")~=nil
 			if sdirexists==false then
 				love.filesystem.mkdir("saves")
 				savedgames={}
 			else
-				savedgames=love.filesystem.enumerate("saves")
+				savedgames=love.filesystem.getDirectoryItems("saves")
 				n=table.maxn(savedgames)
 				savedgames[n+1]="Return"
 			end
@@ -365,7 +378,7 @@ function loadmap(mapname,xxx,yyy,offx,offy)
 	map = love.graphics.newImage("maps/" ..mapname.. "/background.png")
 	collisionmap = love.image.newImageData("maps/" ..mapname.. "/collision.png")
 	mapoverlay = love.graphics.newImage("maps/" ..mapname.. "/overlay.png")
-	if love.filesystem.exists( "maps/" ..mapname.. "/lights.png" ) == true then
+	if love.filesystem.getInfo( "maps/" ..mapname.. "/lights.png" ) ~= nil then
 		islightmap=true
 		lightmap = love.graphics.newImage("maps/" ..mapname.. "/lights.png")
 	else
@@ -469,7 +482,7 @@ function love.keyreleased( key )
 				gamemode="gameoptions"
 				camefrom="mainmenu"
 			elseif mainmenuindex==4 then
-				os.exit()
+				love.event.quit()
 			end
 		end
 		if mainmenuindex>mainmenumax then
@@ -529,8 +542,8 @@ function love.keyreleased( key )
 					local new_sw,new_sh = res_string:match('(%d+)x(%d+)')
 					new_sw,new_sh       = tonumber(new_sw),tonumber(new_sh)
 					if new_sw and new_sh then 
-						local _,_,fullscreen = lg.getMode()
-						lg.setMode(new_sw,new_sh,fullscreen)
+						local _,_,flags = love.window.getMode()
+						love.window.setMode(new_sw,new_sh,flags)
 						sw,sh = new_sw,new_sh
 						res.set(mode,gw,gh,sw,sh)
 					end
@@ -562,7 +575,7 @@ function love.keyreleased( key )
 							typed = {''}
 						end	
 					elseif videomenuindex==3 then
-						lg.toggleFullscreen()
+						love.window.setFullscreen(not love.window.getFullscreen())
 					elseif videomenuindex==4 then
 						gamemode="gameoptions"
 					end
@@ -957,7 +970,7 @@ function draw()
 
 	if gamemode == "splash" then
 		splash:draw(gw/2-(280/2),gh/2-(280/2))
-		if splash:getCurrentFrame()==50 then
+		if splash:getCurrentFrame()>=splash:getSize() then
 			gamemode="menu"
 		end
 	elseif gamemode == "rewardscreen" then
@@ -1098,15 +1111,15 @@ function draw()
 		
 		love.graphics.draw(mapoverlay, cameraoffsetx, cameraoffsety)
 
-		love.graphics.setBlendMode('multiplicative')
 		love.graphics.setColor(0,0,0,worldTime)
 		love.graphics.rectangle("fill", 0, 0, 800, 600 )
-		love.graphics.setColor(255,255,255,worldTime)
 		if islightmap==true then
+		love.graphics.setBlendMode('add')
+		love.graphics.setColor(255,255,255,worldTime)
 		love.graphics.draw(lightmap, cameraoffsetx, cameraoffsety)
+		love.graphics.setBlendMode('alpha')
 		end
 		love.graphics.setColor(255,255,255,255)
-		love.graphics.setBlendMode('alpha')
 		
 		--show notifications
 		if notificationstr~=nil then
@@ -1391,7 +1404,7 @@ function draw()
 		love.graphics.setFont(verdana18)
 	end
 
-	local cur_time = love.timer.getMicroTime()
+	local cur_time = love.timer.getTime()
 	if next_time <= cur_time then
 		next_time = cur_time
 		return

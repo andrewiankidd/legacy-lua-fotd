@@ -1,34 +1,45 @@
 movespeed = 4
 okaytomove=false
+--love2d 11.x: getPixel now returns 0-1, scale the red channel back to 0-255
+--out of bounds reads count as a wall so we never walk off the map
+function collpixel(x,y)
+	x = math.floor(x)
+	y = math.floor(y)
+	if x<0 or y<0 or x>=collisionmap:getWidth() or y>=collisionmap:getHeight() then
+		return 0
+	end
+	local r = collisionmap:getPixel(x,y)
+	return math.floor(r*255+0.5)
+end
 function movementcontrols()
 
 	if love.keyboard.isDown("up") and calcy-movespeed>=(0) or love.keyboard.isDown( "w" ) and calcy-movespeed>=(0)   then
-		pixelupl = {collisionmap:getPixel(calcx, (calcy-movespeed+30))}
-		pixelupr = {collisionmap:getPixel(calcx+protagWidth, (calcy-movespeed+30))}
+		pixelupl = {collpixel(calcx, (calcy-movespeed+30))}
+		pixelupr = {collpixel(calcx+protagWidth, (calcy-movespeed+30))}
 		okaytoanim=true
 	else
 		pixelupl = {0,0,0}
 		pixelupr = {0,0,0}
 	end
 	if love.keyboard.isDown("down") and (calcy+protagHeight)+movespeed<(map:getHeight()) or	love.keyboard.isDown( "s" ) and (calcy+protagHeight)+movespeed<(map:getHeight()) then
-		pixeldownl = {collisionmap:getPixel(calcx, (calcy+movespeed)+protagHeight)}
-		pixeldownr = {collisionmap:getPixel(calcx+protagWidth, (calcy+movespeed)+protagHeight)}
+		pixeldownl = {collpixel(calcx, (calcy+movespeed)+protagHeight)}
+		pixeldownr = {collpixel(calcx+protagWidth, (calcy+movespeed)+protagHeight)}
 		okaytoanim=true
 	else
 		pixeldownl = {0,0,0}
 		pixeldownr = {0,0,0}
 	end
 	if love.keyboard.isDown("left") and calcx-movespeed>=(0)  or	love.keyboard.isDown( "a" ) and calcx-movespeed>=(0)  then	
-		pixelleftt = {collisionmap:getPixel((calcx-movespeed), calcy+30)}
-		pixelleftb = {collisionmap:getPixel((calcx-movespeed), calcy+protagHeight)}
+		pixelleftt = {collpixel((calcx-movespeed), calcy+30)}
+		pixelleftb = {collpixel((calcx-movespeed), calcy+protagHeight)}
 		okaytoanim=true
 	else
 		pixelleftt = {0,0,0}
 		pixelleftb = {0,0,0}
 	end
 	if love.keyboard.isDown("right") and (calcx+protagWidth)+movespeed<(map:getWidth()) or love.keyboard.isDown( "d" ) and (calcx+protagWidth)+movespeed<(map:getWidth()) then	
-		pixelrightt = {collisionmap:getPixel((calcx+movespeed)+protagWidth,  calcy+30)}
-		pixelrightb = {collisionmap:getPixel((calcx+movespeed)+protagWidth,  calcy+protagHeight)}
+		pixelrightt = {collpixel((calcx+movespeed)+protagWidth,  calcy+30)}
+		pixelrightb = {collpixel((calcx+movespeed)+protagWidth,  calcy+protagHeight)}
 		okaytoanim=true
 	else
 		pixelrightt = {0,0,0}
