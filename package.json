@@ -1,0 +1,13 @@
+{
+  "name": "fotd-web",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Web build of Fear of the Dark (LOVE 11.x compiled to WebAssembly via love.js)",
+  "scripts": {
+    "build": "love.js FotD web -t \"Fear of the Dark\" -c",
+    "serve": "npx --yes http-server web -p 8080 -c-1"
+  },
+  "devDependencies": {
+    "love.js": "^11.4.1"
+  }
+}
