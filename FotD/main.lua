@@ -1409,7 +1409,10 @@ function draw()
 		next_time = cur_time
 		return
 	end
+   --web build vsyncs itself, busy-sleeping here just starves the browser
+   if love.system.getOS() ~= "Web" then
    love.timer.sleep(next_time - cur_time)
+   end
 	
 end
 --linecount
