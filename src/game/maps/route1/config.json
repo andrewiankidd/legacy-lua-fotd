@@ -1,0 +1,38 @@
+{
+    "warps": [
+        {
+            "target": "Asgarour",
+            "spawn": [
+                605,
+                260,
+                -910,
+                -600
+            ]
+        }
+    ],
+    "entities": [
+        { "character": "Skeleton", "x": 1045, "y": 255, "behavior": "patrol",
+          "patrol": { "distance": 50, "direction": "down" }, "interaction": "collision",
+          "seen_range": 200, "chase_speed": 1.2, "follow_distance": 0,
+          "dir_frames": { "north": [1,3], "south": [4,6], "east": [7,9], "west": [10,12] } },
+        { "character": "Skeleton", "x": 850, "y": 255, "behavior": "patrol",
+          "patrol": { "distance": 100, "direction": "left" }, "interaction": "collision",
+          "seen_range": 200, "chase_speed": 1.2, "follow_distance": 0,
+          "dir_frames": { "north": [1,3], "south": [4,6], "east": [7,9], "west": [10,12] } }
+    ],
+    "items": [
+        {
+            "id": "bobskey",
+            "x": 1200,
+            "y": 250,
+            "uid": 1,
+            "condition": "objective:002"
+        }
+    ],
+    "spawn": {
+        "x": 198,
+        "y": 235,
+        "cam_x": 176,
+        "cam_y": -40
+    }
+}

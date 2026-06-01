@@ -1,0 +1,7 @@
+{
+    "id": "002",
+    "title": "Find the Key",
+    "description": "Bob has lost his special key, he remembers having it when he was walking the dog...",
+    "type": "hasitem:bobskey",
+    "next": "003"
+}

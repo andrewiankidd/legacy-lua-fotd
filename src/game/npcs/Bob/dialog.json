@@ -1,0 +1,38 @@
+{
+    "dialog": [
+        {
+            "condition": "objective:001",
+            "lines": [
+                "Hmm...",
+                "Oh, hi there!",
+                "You haven't seen my key around have you?",
+                " ",
+                "I lost them when I was walking the dog...",
+                " "
+            ]
+        },
+        {
+            "condition": "objective:002",
+            "lines": [
+                "Let me know if you see my key please..."
+            ]
+        },
+        {
+            "condition": "objective:003",
+            "lines": [
+                "Oh my!",
+                "You actually found it!",
+                "Thankyou!!!"
+            ],
+            "actions": [
+                "removeitem:bobskey"
+            ]
+        },
+        {
+            "lines": [
+                "Hey there!",
+                "Thanks for finding that pesky key."
+            ]
+        }
+    ]
+}

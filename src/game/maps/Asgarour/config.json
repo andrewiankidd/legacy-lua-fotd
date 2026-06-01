@@ -1,0 +1,57 @@
+{
+    "warps": [
+        {
+            "target": "Asgarourhouse1",
+            "spawn": [
+                340,
+                330,
+                0,
+                0
+            ]
+        },
+        {
+            "target": "route1",
+            "spawn": [
+                198,
+                235,
+                176,
+                -40
+            ]
+        },
+        {
+            "target": "Asgarourhouse2",
+            "spawn": [
+                350,
+                350,
+                0,
+                0
+            ]
+        },
+        {
+            "target": "Asgarourhouse3",
+            "spawn": [
+                350,
+                350,
+                0,
+                0
+            ]
+        },
+        {
+            "target": "Asgarourhouse4",
+            "spawn": [
+                350,
+                350,
+                0,
+                0
+            ]
+        }
+    ],
+    "entities": [],
+    "items": [],
+    "spawn": {
+        "x": 200,
+        "y": 200,
+        "cam_x": 0,
+        "cam_y": 0
+    }
+}

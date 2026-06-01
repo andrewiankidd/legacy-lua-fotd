@@ -1,0 +1,7 @@
+{
+    "id": "001",
+    "title": "Talk To Bob",
+    "description": "Find & talk to Bob, he has a problem that you can help with",
+    "type": "talkto:Bob",
+    "next": "002"
+}

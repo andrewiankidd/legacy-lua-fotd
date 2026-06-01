@@ -1,0 +1,23 @@
+{
+    "warps": [
+        {
+            "target": "Asgarour",
+            "spawn": [
+                535,
+                325,
+                -395,
+                -1170
+            ]
+        }
+    ],
+    "entities": [
+        { "character": "Eddy", "x": 360, "y": 200, "behavior": "static", "interaction": "button" }
+    ],
+    "items": [],
+    "spawn": {
+        "x": 200,
+        "y": 200,
+        "cam_x": 0,
+        "cam_y": 0
+    }
+}

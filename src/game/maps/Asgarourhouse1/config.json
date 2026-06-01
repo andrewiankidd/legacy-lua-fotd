@@ -1,0 +1,25 @@
+{
+    "warps": [
+        {
+            "target": "Asgarour",
+            "spawn": [
+                208,
+                120,
+                -338,
+                -448
+            ]
+        }
+    ],
+    "entities": [
+        { "character": "Alice", "x": 255, "y": 145, "behavior": "static", "interaction": "button" },
+        { "character": "Bob", "x": 170, "y": 230, "behavior": "static", "interaction": "button" },
+        { "character": "Dog", "x": 370, "y": 260, "behavior": "patrol", "patrol": { "distance": 30, "direction": "left" }, "interaction": "button", "seen_range": 150, "chase_speed": 1.5 }
+    ],
+    "items": [],
+    "spawn": {
+        "x": 200,
+        "y": 200,
+        "cam_x": 0,
+        "cam_y": 0
+    }
+}

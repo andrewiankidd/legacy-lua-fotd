@@ -1,0 +1,7 @@
+{
+    "id": "999",
+    "title": "Game Over",
+    "description": "Everybody go home!",
+    "type": "none:none",
+    "next": "004"
+}

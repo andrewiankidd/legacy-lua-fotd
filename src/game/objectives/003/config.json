@@ -1,0 +1,7 @@
+{
+    "id": "003",
+    "title": "Return the key",
+    "description": "Return Bobs key!",
+    "type": "talkto:Bob",
+    "next": "999"
+}

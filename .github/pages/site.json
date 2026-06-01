@@ -1,0 +1,40 @@
+{
+  "title": "Fear of the Dark",
+  "title_html": "Fear of <mark>the Dark</mark>",
+  "description": "A retro top-down RPG built with Lua and LOVE2D, circa 2011. Explore maps, fight mobs, collect items, talk to NPCs.",
+  "description_html": "A retro top-down RPG built with Lua and <a href=\"https://love2d.org\">LOVE2D</a> circa 2011. Explore maps, fight mobs, collect items, and talk to NPCs. A spiritual successor to <a href=\"https://github.com/andrewiankidd/legacy-vb-cellgame\">cellgame</a>.",
+  "repo": "andrewiankidd/legacy-lua-fotd",
+  "source": "https://github.com/andrewiankidd/legacy-lua-fotd",
+  "theme": {
+    "background": "#1a0a0a",
+    "foreground": "rgba(26, 10, 10, 0.75)",
+    "highlight": "#c44",
+    "text": "#e0d0d0",
+    "muted": "#8a6a6a",
+    "card": "#2a1414",
+    "border": "#4a2a2a",
+    "wave-start": "#c44",
+    "wave-end": "#1a0a0a"
+  },
+  "downloads": [
+    {
+      "label": "Play in Browser",
+      "href": "Web/index.html",
+      "primary": true,
+      "icon": "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"
+    },
+    {
+      "label": ".love File",
+      "release_file": "FotD-love.zip",
+      "icon": "M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"
+    }
+  ],
+  "features": [
+    "<strong>Dynamic NPCs</strong> &mdash; add characters with a folder: script, portrait, sprite",
+    "<strong>Map system</strong> &mdash; collision maps, warps, overlays, mob/NPC/item placement",
+    "<strong>Combat</strong> &mdash; mob encounters with stats-driven battles",
+    "<strong>Items &amp; objectives</strong> &mdash; collect items, complete quests (hasitem, goto, talkto)",
+    "<strong>Camera panning</strong> &mdash; maps can be any size, camera follows the player",
+    "<strong>Web build</strong> &mdash; plays in the browser via love.js (WASM)"
+  ]
+}

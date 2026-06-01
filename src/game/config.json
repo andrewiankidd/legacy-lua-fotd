@@ -1,0 +1,20 @@
+{
+    "title": "Fear of the Dark",
+    "width": 800,
+    "height": 600,
+    "play_label": "New Game",
+    "menu_main_bg": "game/pictures/menu/bg.png",
+    "menu_main_logo": "game/pictures/icon.png",
+    "menu_main_font": "game/fonts/TwoTrees.ttf",
+    "menu_main_font_size": 48,
+    "menu_main_entry_font": "game/fonts/TwoTrees.ttf",
+    "menu_main_entry_font_size": 28,
+    "music_menu": "game/sound/fotd.ogg",
+    "music_intro": "game/sound/fotd.ogg",
+    "starting_map": "Asgarourhouse2",
+    "starting_quest": "001",
+    "daynight_start": 50,
+    "default_filter": { "min": "linear", "mag": "nearest" },
+    "rpg": { "hp": 10, "dmg": 1, "level": 1, "xp": 0 },
+    "fps_limit": 60
+}

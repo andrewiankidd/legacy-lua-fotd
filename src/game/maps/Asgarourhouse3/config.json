@@ -1,0 +1,23 @@
+{
+    "warps": [
+        {
+            "target": "Asgarour",
+            "spawn": [
+                600,
+                200,
+                -394,
+                -956
+            ]
+        }
+    ],
+    "entities": [
+        { "character": "Jayne", "x": 370, "y": 320, "behavior": "static", "interaction": "button" }
+    ],
+    "items": [],
+    "spawn": {
+        "x": 200,
+        "y": 200,
+        "cam_x": 0,
+        "cam_y": 0
+    }
+}

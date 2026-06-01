@@ -1,0 +1,21 @@
+{
+    "warps": [
+        {
+            "target": "Asgarour",
+            "spawn": [
+                210,
+                340,
+                -270,
+                -1160
+            ]
+        }
+    ],
+    "entities": [],
+    "items": [],
+    "spawn": {
+        "x": 246,
+        "y": 322,
+        "cam_x": 148,
+        "cam_y": 64
+    }
+}

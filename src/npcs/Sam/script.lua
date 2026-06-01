@@ -1,1 +1,0 @@
-npcscript = {"Imagine losing the key to the Town Gates?", "A bit bloody ridiculous"}
