@@ -66,10 +66,6 @@ local obtaineditemids = {}
 local mapoverlay = nil
 local lightmap = nil
 local islightmap = false
-local curmap = nil
-local objectiveid = nil
-local objectivetype = nil
-local nextobj = nil
 local showmsgscreen = false
 local msgstring = nil
 local cancontinue = false
@@ -213,7 +209,6 @@ function loadmap(mapname, spawn_override)
     state.y = tonumber(spawn.y) or DEFAULT_SPAWN_Y
     state.camera_x = tonumber(spawn.cam_x) or 0
     state.camera_y = tonumber(spawn.cam_y) or 0
-    curmap = mapname
     Player.update_calc(state)
 
     for i, item in ipairs(itemlist) do
@@ -330,10 +325,6 @@ end
 
 function newobjective(ToLoad)
     QuestsModule.add(ToLoad)
-    objectiveid = ToLoad
-    local qd = QuestsModule.get_current_data()
-    objectivetype = qd.type or ""
-    nextobj = qd.next
 end
 
 -- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
