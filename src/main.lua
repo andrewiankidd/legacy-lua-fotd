@@ -1,4 +1,4 @@
-﻿local Love2D4Me = require("love2d4me")
+local Love2D4Me = require("love2d4me")
 Input = Love2D4Me.input
 local GameState = Love2D4Me.gamestate
 local Player = Love2D4Me.player
@@ -48,7 +48,7 @@ Input.bind("quest_log", { keys = {"q"} })
 Input.bind("inventory", { keys = {"tab"} })
 
 -- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
--- Player state (replaces all globals â€” passed to movement.lua)
+-- Player state (replaces all globals -- passed to movement.lua)
 -- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 
 local state = nil
