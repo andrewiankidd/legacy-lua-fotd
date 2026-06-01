@@ -1,16 +1,35 @@
 # Changelog
 
-## 2026-06 — Repository modernization
-- Restructured: game source moved to `src/`
-- Removed committed binaries (love.exe, DLLs)
-- Added CI/CD with rolling releases and GitHub Pages deploy
-- Added project website, docs, and changelog
+All notable changes to this project will be documented in this file.
 
-## 2024 — Web port
-- Ported from LOVE 0.7 to LOVE 11.x API
-- Added love.js web build (WebAssembly)
-- Added npm build scripts for packing and serving
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
-## 2011 — Original release
-- Top-down RPG with dynamic NPC, map, mob, and item systems
-- Built with Lua and LOVE 0.7
+## [Unreleased]
+
+### Added
+- CI/CD pipeline with rolling `latest-main` releases and GitHub Pages deploy
+- Project website with play-in-browser, download links, and feature list
+- Documentation (`docs/`) covering game systems, file structure, and controls
+- `npm run setup` bootstraps a dev machine (installs deps + downloads LOVE 11.5)
+- `npm start` launches the game using the locally-installed LOVE binary
+- love.js web build (WASM) -- play in the browser
+- Shared module submodule (`src/lib/`) for input, animation, camera, collision, config, storage, settings
+
+### Changed
+- Game source moved from `FotD/` to `src/`
+- Animation library switched from the legacy animation library to shared `lib/animation.lua` via compat shim
+- Configuration uses shared `lib/conf.lua` with persistent settings support
+- README modernized with logo, badges, and standard layout
+
+### Removed
+- Committed binaries (love.exe, DLLs, lovedist.exe)
+- Legacy build scripts (`_compile.bat`, `_start.bat`)
+
+## 2011 -- Original Release
+
+### Added
+- Top-down RPG with turn-based battles and day/night cycle
+- Dynamic NPC system -- folder-based scripting (script, portrait, sprite)
+- Map system with collision maps, warps, overlays, entity placement
+- Item collection and quest objectives (hasitem, goto, talkto)
+- Ported from LOVE 0.7 to LOVE 11.x API (2024)

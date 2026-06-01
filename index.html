@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Fear of the Dark — a retro top-down RPG built with Lua and LOVE2D, circa 2011. Explore maps, fight mobs, collect items, talk to NPCs.">
-    <title>Fear of the Dark</title>
+    <meta name="description" id="meta-desc" content="">
+    <title id="page-title"></title>
     <link rel="icon" type="image/png" href="logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -63,202 +63,55 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        html, body {
-            background: var(--background);
-            color: var(--text);
-            font-family: "Montserrat", sans-serif;
-            min-height: 100vh;
-        }
+        html, body { background: var(--background); color: var(--text); font-family: "Montserrat", sans-serif; min-height: 100vh; }
         a { color: var(--text); text-decoration: none; transition: 0.3s; font-weight: 600; }
         a:hover { color: var(--highlight); }
         mark { background-color: var(--highlight); color: var(--background); padding: 0 6px; font-weight: 800; }
-
-        svg.header {
-            display: block;
-            width: 100%;
-            position: absolute;
-            top: -90px;
-            z-index: -1;
-        }
-
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 30px;
-        }
-        header h2 {
-            color: var(--text);
-            margin: 0;
-            font-size: 16pt;
-            text-transform: uppercase;
-        }
-        header nav a {
-            color: var(--primary);
-            margin-left: 20px;
-            text-transform: uppercase;
-            font-size: 12pt;
-        }
-        header nav a:hover {
-            border-bottom: 1px solid var(--highlight);
-            color: var(--highlight);
-        }
-
-        main {
-            color: var(--primary);
-            width: 90%;
-            max-width: 900px;
-            margin: 0 auto 80px;
-            background: var(--foreground);
-            border-radius: var(--radius);
-            padding: 40px;
-        }
-
-        .hero {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            margin-bottom: 40px;
-        }
-        .hero img.logo {
-            width: 140px;
-            height: 140px;
-            border-radius: 20px;
-            margin-bottom: 1.2rem;
-        }
-        .hero h1 {
-            font-size: 3rem;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            display: inline-block;
-        }
-        .hero p {
-            color: var(--muted);
-            max-width: 550px;
-            margin-top: 0.8rem;
-            line-height: 1.7;
-            font-size: 1rem;
-        }
-
-        .downloads {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 0.6rem;
-            margin-bottom: 40px;
-        }
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.6rem 1.1rem;
-            background: var(--card);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            font-size: 0.9rem;
-            font-weight: 700;
-            color: var(--text);
-            transition: background 0.15s, border-color 0.15s;
-        }
-        .btn:hover {
-            background: var(--highlight);
-            border-color: var(--highlight);
-            color: var(--background);
-        }
+        svg.header { display: block; width: 100%; position: absolute; top: -90px; z-index: -1; }
+        header { display: flex; justify-content: space-between; align-items: center; padding: 30px; }
+        header h2 { color: var(--text); margin: 0; font-size: 16pt; text-transform: uppercase; }
+        header nav a { color: var(--primary); margin-left: 20px; text-transform: uppercase; font-size: 12pt; }
+        header nav a:hover { border-bottom: 1px solid var(--highlight); color: var(--highlight); }
+        main { color: var(--primary); width: 90%; max-width: 900px; margin: 0 auto 80px; background: var(--foreground); border-radius: var(--radius); padding: 40px; }
+        .hero { display: flex; flex-direction: column; align-items: center; text-align: center; margin-bottom: 40px; }
+        .hero img.logo { width: 140px; height: 140px; border-radius: 20px; margin-bottom: 1.2rem; }
+        .hero h1 { font-size: 3rem; font-weight: 900; text-transform: uppercase; letter-spacing: 2px; display: inline-block; }
+        .hero p { color: var(--muted); max-width: 550px; margin-top: 0.8rem; line-height: 1.7; font-size: 1rem; }
+        .downloads { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.6rem; margin-bottom: 40px; }
+        .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.6rem 1.1rem; background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); font-size: 0.9rem; font-weight: 700; color: var(--text); transition: background 0.15s, border-color 0.15s; }
+        .btn:hover { background: var(--highlight); border-color: var(--highlight); color: var(--background); }
         .btn svg { width: 16px; height: 16px; fill: currentColor; }
-        .btn-primary {
-            background: var(--highlight);
-            border-color: var(--highlight);
-            color: var(--background);
-        }
+        .btn-primary { background: var(--highlight); border-color: var(--highlight); color: var(--background); }
         .btn-primary:hover { filter: brightness(1.1); }
-
-        .features h2 {
-            font-size: 1.2rem;
-            text-transform: uppercase;
-            margin-bottom: 1rem;
-        }
-        .features ul {
-            list-style: none;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 0.5rem;
-        }
-        .features li {
-            background: var(--card);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 0.6rem 0.9rem;
-            font-size: 0.85rem;
-            line-height: 1.4;
-        }
-
-        footer {
-            color: var(--primary);
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 12px 30px;
-            font-size: 0.8rem;
-            background: var(--background);
-        }
+        .features h2 { font-size: 1.2rem; text-transform: uppercase; margin-bottom: 1rem; }
+        .features ul { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; }
+        .features li { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 0.6rem 0.9rem; font-size: 0.85rem; line-height: 1.4; }
+        footer { color: var(--primary); position: fixed; bottom: 0; left: 0; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 12px 30px; font-size: 0.8rem; background: var(--background); }
         footer a { color: var(--text); display: inline-flex; align-items: center; }
         footer a:hover { filter: brightness(1.2); }
-        footer svg.personal-logo {
-            width: 22px;
-            height: 22px;
-            margin-left: 4px;
-            vertical-align: middle;
-        }
+        footer svg.personal-logo { width: 22px; height: 22px; margin-left: 4px; vertical-align: middle; }
         footer svg.personal-logo .punk { display: none; }
         footer a:hover svg.personal-logo .punk { display: inline; }
-
-        @media (max-width: 700px) {
-            main { padding: 20px; width: 95%; }
-            .hero h1 { font-size: 2rem; }
-            .features ul { grid-template-columns: 1fr; }
-            header { padding: 20px; flex-direction: column; gap: 10px; }
-        }
+        @media (max-width: 700px) { main { padding: 20px; width: 95%; } .hero h1 { font-size: 2rem; } .features ul { grid-template-columns: 1fr; } header { padding: 20px; flex-direction: column; gap: 10px; } }
     </style>
 </head>
 <body>
     <svg class="header" xmlns="http://www.w3.org/2000/svg" width="100%" height="272" preserveAspectRatio="xMidYMid" viewBox="0 0 1827 272">
-      <defs>
-        <linearGradient id="wave-gradient" x1="0" x2="1" y1="0" y2="0">
-          <stop stop-color="var(--wave-start)" offset="0" />
-          <stop stop-color="var(--wave-end)" offset="1" />
-        </linearGradient>
-      </defs>
+      <defs><linearGradient id="wave-gradient" x1="0" x2="1" y1="0" y2="0"><stop stop-color="var(--wave-start)" offset="0" /><stop stop-color="var(--wave-end)" offset="1" /></linearGradient></defs>
       <g transform="translate(913.5,144) scale(-1,1) translate(-913.5,-144)">
-        <path d="" fill="url(#wave-gradient)" opacity="0.4">
-          <animate attributeName="d" dur="10s" repeatCount="indefinite" keyTimes="0;0.333;0.667;1" keySplines="0.2 0 0.2 1;0.2 0 0.2 1;0.2 0 0.2 1" calcMode="spline" values="M0 0L 0 282Q 183 281 365 247T 731 164T 1096 148T 1462 62T 1827 13L 1827 0Z;M0 0L 0 297Q 183 242 365 225T 731 164T 1096 102T 1462 56T 1827 -8L 1827 0Z;M0 0L 0 278Q 183 246 365 213T 731 188T 1096 123T 1462 38T 1827 -34L 1827 0Z;M0 0L 0 282Q 183 281 365 247T 731 164T 1096 148T 1462 62T 1827 13L 1827 0Z" />
-        </path>
-        <path d="" fill="url(#wave-gradient)" opacity="0.4">
-          <animate attributeName="d" dur="10s" repeatCount="indefinite" keyTimes="0;0.333;0.667;1" keySplines="0.2 0 0.2 1;0.2 0 0.2 1;0.2 0 0.2 1" calcMode="spline" begin="-2s" values="M0 0L 0 293Q 183 271 365 236T 731 176T 1096 134T 1462 33T 1827 -6L 1827 0Z;M0 0L 0 299Q 183 294 365 257T 731 167T 1096 99T 1462 90T 1827 -4L 1827 0Z;M0 0L 0 309Q 183 293 365 256T 731 156T 1096 95T 1462 48T 1827 4L 1827 0Z;M0 0L 0 293Q 183 271 365 236T 731 176T 1096 134T 1462 33T 1827 -6L 1827 0Z" />
-        </path>
-        <path d="" fill="url(#wave-gradient)" opacity="0.4">
-          <animate attributeName="d" dur="10s" repeatCount="indefinite" keyTimes="0;0.333;0.667;1" keySplines="0.2 0 0.2 1;0.2 0 0.2 1;0.2 0 0.2 1" calcMode="spline" begin="-4s" values="M0 0L 0 283Q 183 253 365 227T 731 148T 1096 127T 1462 62T 1827 -35L 1827 0Z;M0 0L 0 280Q 183 269 365 224T 731 207T 1096 145T 1462 50T 1827 29L 1827 0Z;M0 0L 0 291Q 183 301 365 258T 731 174T 1096 85T 1462 38T 1827 -2L 1827 0Z;M0 0L 0 283Q 183 253 365 227T 731 148T 1096 127T 1462 62T 1827 -35L 1827 0Z" />
-        </path>
-        <path d="" fill="url(#wave-gradient)" opacity="0.4">
-          <animate attributeName="d" dur="10s" repeatCount="indefinite" keyTimes="0;0.333;0.667;1" keySplines="0.2 0 0.2 1;0.2 0 0.2 1;0.2 0 0.2 1" calcMode="spline" begin="-6s" values="M0 0L 0 322Q 183 287 365 241T 731 182T 1096 117T 1462 107T 1827 25L 1827 0Z;M0 0L 0 301Q 183 281 365 258T 731 207T 1096 140T 1462 54T 1827 30L 1827 0Z;M0 0L 0 318Q 183 272 365 231T 731 173T 1096 118T 1462 19T 1827 -26L 1827 0Z;M0 0L 0 322Q 183 287 365 241T 731 182T 1096 117T 1462 107T 1827 25L 1827 0Z" />
-        </path>
-        <path d="" fill="url(#wave-gradient)" opacity="0.4">
-          <animate attributeName="d" dur="10s" repeatCount="indefinite" keyTimes="0;0.333;0.667;1" keySplines="0.2 0 0.2 1;0.2 0 0.2 1;0.2 0 0.2 1" calcMode="spline" begin="-8s" values="M0 0L 0 320Q 183 248 365 226T 731 185T 1096 154T 1462 81T 1827 28L 1827 0Z;M0 0L 0 278Q 183 287 365 241T 731 183T 1096 114T 1462 28T 1827 -18L 1827 0Z;M0 0L 0 274Q 183 305 365 265T 731 189T 1096 116T 1462 71T 1827 37L 1827 0Z;M0 0L 0 320Q 183 248 365 226T 731 185T 1096 154T 1462 81T 1827 28L 1827 0Z" />
-        </path>
+        <path d="" fill="url(#wave-gradient)" opacity="0.4"><animate attributeName="d" dur="10s" repeatCount="indefinite" keyTimes="0;0.333;0.667;1" keySplines="0.2 0 0.2 1;0.2 0 0.2 1;0.2 0 0.2 1" calcMode="spline" values="M0 0L 0 282Q 183 281 365 247T 731 164T 1096 148T 1462 62T 1827 13L 1827 0Z;M0 0L 0 297Q 183 242 365 225T 731 164T 1096 102T 1462 56T 1827 -8L 1827 0Z;M0 0L 0 278Q 183 246 365 213T 731 188T 1096 123T 1462 38T 1827 -34L 1827 0Z;M0 0L 0 282Q 183 281 365 247T 731 164T 1096 148T 1462 62T 1827 13L 1827 0Z" /></path>
+        <path d="" fill="url(#wave-gradient)" opacity="0.4"><animate attributeName="d" dur="10s" repeatCount="indefinite" keyTimes="0;0.333;0.667;1" keySplines="0.2 0 0.2 1;0.2 0 0.2 1;0.2 0 0.2 1" calcMode="spline" begin="-2s" values="M0 0L 0 293Q 183 271 365 236T 731 176T 1096 134T 1462 33T 1827 -6L 1827 0Z;M0 0L 0 299Q 183 294 365 257T 731 167T 1096 99T 1462 90T 1827 -4L 1827 0Z;M0 0L 0 309Q 183 293 365 256T 731 156T 1096 95T 1462 48T 1827 4L 1827 0Z;M0 0L 0 293Q 183 271 365 236T 731 176T 1096 134T 1462 33T 1827 -6L 1827 0Z" /></path>
+        <path d="" fill="url(#wave-gradient)" opacity="0.4"><animate attributeName="d" dur="10s" repeatCount="indefinite" keyTimes="0;0.333;0.667;1" keySplines="0.2 0 0.2 1;0.2 0 0.2 1;0.2 0 0.2 1" calcMode="spline" begin="-4s" values="M0 0L 0 283Q 183 253 365 227T 731 148T 1096 127T 1462 62T 1827 -35L 1827 0Z;M0 0L 0 280Q 183 269 365 224T 731 207T 1096 145T 1462 50T 1827 29L 1827 0Z;M0 0L 0 291Q 183 301 365 258T 731 174T 1096 85T 1462 38T 1827 -2L 1827 0Z;M0 0L 0 283Q 183 253 365 227T 731 148T 1096 127T 1462 62T 1827 -35L 1827 0Z" /></path>
+        <path d="" fill="url(#wave-gradient)" opacity="0.4"><animate attributeName="d" dur="10s" repeatCount="indefinite" keyTimes="0;0.333;0.667;1" keySplines="0.2 0 0.2 1;0.2 0 0.2 1;0.2 0 0.2 1" calcMode="spline" begin="-6s" values="M0 0L 0 322Q 183 287 365 241T 731 182T 1096 117T 1462 107T 1827 25L 1827 0Z;M0 0L 0 301Q 183 281 365 258T 731 207T 1096 140T 1462 54T 1827 30L 1827 0Z;M0 0L 0 318Q 183 272 365 231T 731 173T 1096 118T 1462 19T 1827 -26L 1827 0Z;M0 0L 0 322Q 183 287 365 241T 731 182T 1096 117T 1462 107T 1827 25L 1827 0Z" /></path>
+        <path d="" fill="url(#wave-gradient)" opacity="0.4"><animate attributeName="d" dur="10s" repeatCount="indefinite" keyTimes="0;0.333;0.667;1" keySplines="0.2 0 0.2 1;0.2 0 0.2 1;0.2 0 0.2 1" calcMode="spline" begin="-8s" values="M0 0L 0 320Q 183 248 365 226T 731 185T 1096 154T 1462 81T 1827 28L 1827 0Z;M0 0L 0 278Q 183 287 365 241T 731 183T 1096 114T 1462 28T 1827 -18L 1827 0Z;M0 0L 0 274Q 183 305 365 265T 731 189T 1096 116T 1462 71T 1827 37L 1827 0Z;M0 0L 0 320Q 183 248 365 226T 731 185T 1096 154T 1462 81T 1827 28L 1827 0Z" /></path>
       </g>
     </svg>
 
     <header>
-        <h2>Fear of the Dark</h2>
+        <h2 id="header-title"></h2>
         <nav>
-            <a href="javascript:toggleLightMode();">🌗</a>
-            <a href="https://github.com/andrewiankidd/legacy-lua-fotd">Source</a>
+            <a href="javascript:toggleLightMode();">&#127767;</a>
+            <a id="nav-source" href="#">Source</a>
             <a href="changelog.html">Changelog</a>
             <a href="docs.html">Docs</a>
         </nav>
@@ -266,32 +119,14 @@
 
     <main role="main">
         <div class="hero">
-            <img class="logo" src="logo.png" alt="Fear of the Dark icon">
-            <h1>Fear of <mark>the Dark</mark></h1>
-            <p>A retro top-down RPG built with Lua and <a href="https://love2d.org">LOVE2D</a> circa 2011. Explore maps, fight mobs, collect items, and talk to NPCs. A spiritual successor to <a href="https://github.com/andrewiankidd/legacy-vb-cellgame">cellgame</a>.</p>
+            <img class="logo" src="logo.png" id="hero-logo" alt="">
+            <h1 id="hero-title"></h1>
+            <p id="hero-desc"></p>
         </div>
-
-        <div class="downloads">
-            <a class="btn btn-primary" href="Web/index.html">
-                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-                Play in Browser
-            </a>
-            <a class="btn" data-download="FotD-love.zip">
-                <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
-                .love File
-            </a>
-        </div>
-
+        <div class="downloads" id="downloads"></div>
         <div class="features">
             <h2>Features</h2>
-            <ul>
-                <li><strong>Dynamic NPCs</strong> &mdash; add characters with a folder: script, portrait, sprite</li>
-                <li><strong>Map system</strong> &mdash; collision maps, warps, overlays, mob/NPC/item placement</li>
-                <li><strong>Combat</strong> &mdash; mob encounters with stats-driven battles</li>
-                <li><strong>Items &amp; objectives</strong> &mdash; collect items, complete quests (hasitem, goto, talkto)</li>
-                <li><strong>Camera panning</strong> &mdash; maps can be any size, camera follows the player</li>
-                <li><strong>Web build</strong> &mdash; plays in the browser via love.js (WASM)</li>
-            </ul>
+            <ul id="features-list"></ul>
         </div>
     </main>
 
@@ -320,9 +155,57 @@
     </footer>
 
     <script>
-        document.querySelectorAll("[data-download]").forEach(function(el) {
-            var file = el.getAttribute("data-download");
-            el.href = "https://github.com/andrewiankidd/legacy-lua-fotd/releases/download/latest-main/" + file;
+        fetch("site.json").then(function(r) { return r.json(); }).then(function(site) {
+            // Theme
+            if (site.theme) {
+                var root = document.documentElement;
+                Object.keys(site.theme).forEach(function(k) {
+                    root.style.setProperty("--" + k, site.theme[k]);
+                });
+            }
+
+            // Meta
+            document.getElementById("page-title").textContent = site.title;
+            document.getElementById("meta-desc").setAttribute("content", site.description);
+
+            // Header
+            document.getElementById("header-title").textContent = site.title;
+            document.getElementById("nav-source").href = site.source;
+
+            // Hero
+            document.getElementById("hero-logo").alt = site.title + " icon";
+            document.getElementById("hero-title").innerHTML = site.title_html || site.title;
+            document.getElementById("hero-desc").innerHTML = site.description_html || site.description;
+
+            // Downloads
+            var dl = document.getElementById("downloads");
+            (site.downloads || []).forEach(function(d) {
+                var a = document.createElement("a");
+                a.className = "btn" + (d.primary ? " btn-primary" : "");
+                if (d.href) {
+                    a.href = d.href;
+                } else if (d.release_file) {
+                    a.href = "https://github.com/" + site.repo + "/releases/download/latest-main/" + d.release_file;
+                }
+                if (d.icon) {
+                    var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+                    svg.setAttribute("viewBox", "0 0 24 24");
+                    var path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+                    path.setAttribute("d", d.icon);
+                    svg.appendChild(path);
+                    a.appendChild(svg);
+                }
+                a.appendChild(document.createTextNode(d.label));
+                dl.appendChild(a);
+            });
+
+            // Features
+            var ul = document.getElementById("features-list");
+            (site.features || []).forEach(function(f) {
+                var li = document.createElement("li");
+                li.innerHTML = f;
+                ul.appendChild(li);
+            });
         });
 
         function toggleLightMode() {
@@ -330,7 +213,6 @@
             localStorage.setItem("theme", document.body.classList.contains("light") ? "light" : "dark");
             updateWaveColors();
         }
-
         function updateWaveColors() {
             var style = getComputedStyle(document.documentElement);
             var stops = document.querySelectorAll("#wave-gradient stop");
@@ -339,7 +221,6 @@
                 stops[1].setAttribute("stop-color", style.getPropertyValue("--wave-end").trim());
             }
         }
-
         if (localStorage.getItem("theme") === "light") {
             document.body.classList.add("light");
             updateWaveColors();
