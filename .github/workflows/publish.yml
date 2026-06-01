@@ -21,4 +21,4 @@ jobs:
     with:
       project_name: "Fear of the Dark"
       love_filename: "FotD"
-      branch: "web-port"
+      branch: "master"
