@@ -1,3 +1,7 @@
-Fear of The Dark_dist
 node_modules/
+love/
 FotD.love
+Web/
+*.dll
+*.exe
+*_dist/

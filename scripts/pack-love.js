@@ -6,7 +6,7 @@ const fs = require('fs');
 const AdmZip = require('adm-zip');
 
 const root = path.join(__dirname, '..');
-const gameDir = path.join(root, 'FotD');
+const gameDir = path.join(root, 'src');
 const out = path.join(root, 'FotD.love');
 
 fs.rmSync(out, { force: true });

@@ -1,13 +1,44 @@
-# Fear of the Dark
+# legacy-lua-fotd
+##### _Fear of the Dark_
 
-A game I was working on using Lua + Love2D, 2011ish
+![logo](assets/logo.png)
 
-a spiritual successor to my previous project [cellgame](https://github.com/andrewiankidd/legacy-vb-cellgame) :)
+## About
+**Fear of the Dark** is a retro top-down RPG built with Lua and [LOVE2D](https://love2d.org), originally written around 2011. Explore maps, fight mobs, collect items, and talk to NPCs. A spiritual successor to [cellgame](https://github.com/andrewiankidd/legacy-vb-cellgame).
 
-## Download
-Experience the jank for yourself:
+## Features
+- Dynamic NPC system — add characters with a folder: script, portrait, sprite
+- Map system with collision maps, warps, overlays, and entity placement
+- Combat encounters with stats-driven battles
+- Item collection and quest objectives (hasitem, goto, talkto)
+- Camera panning for maps of any size
+- Web build via love.js (WASM)
 
-[Click to download](https://github.com/andrewiankidd/legacy-lua-fotd/releases/download/release/Fear.of.The.Dark.zip)
+### Links
+<p align="center">
+    <a href="https://andrewiankidd.github.io/legacy-lua-fotd/">
+        <img src="https://img.shields.io/badge/%F0%9F%8E%AE%20FotD-darkred.svg" height="50" target="_blank" />
+    </a>
+    <br>
+    <strong>Play:</strong>
+    <br>
+    <a href="https://andrewiankidd.github.io/legacy-lua-fotd/Web/index.html">
+        <img src="https://img.shields.io/badge/%f0%9f%8c%90%20Browser-darkred.svg" />
+    </a>
+    <a href="https://github.com/andrewiankidd/legacy-lua-fotd/releases/download/latest-main/FotD-love.zip">
+        <img src="https://img.shields.io/badge/.love%20File-darkred.svg" />
+    </a>
+    <br>
+    <strong>Source Code:</strong>
+    <br>
+    <a href="https://github.com/andrewiankidd/legacy-lua-fotd">
+        <img src="https://img.shields.io/badge/GitHub-darkred.svg?logo=gitHub" />
+    </a>
+    <br>
+    <a href="https://github.com/andrewiankidd/legacy-lua-fotd/actions/workflows/publish.yml">
+        <img src="https://github.com/andrewiankidd/legacy-lua-fotd/actions/workflows/publish.yml/badge.svg" />
+    </a>
+</p>
 
 ## Video
 
@@ -15,34 +46,20 @@ Click to play
 
 [![screenshot](assets/screenshot.png)](https://youtu.be/42uv4JNxzfo)
 
-## Play in the browser
+## Running locally
 
-A web build (LÖVE compiled to WebAssembly via [love.js](https://github.com/Davidobot/love.js)) lives in [`web/`](web/). It needs to be served over HTTP — opening `index.html` over `file://` won't work, browsers block WebAssembly there.
+    npm run setup      # install npm deps + download LOVE 11.5
+    npm start          # launch the game
 
-    npm install
-    npm run build      # regenerate web/ from the FotD/ folder
-    npm run serve      # serve web/ at http://localhost:8080
+### Web build
 
-## Running the desktop version
+    npm run build      # pack src/ into .love, compile to Web/ via love.js
+    npm run serve      # serve Web/ at http://localhost:8080
 
-Install [LÖVE 11.x](https://love2d.org) and point it at the game folder:
+## Documentation
 
-    love FotD
+See the [docs](docs/index.md) for game systems and file structure.
 
-The original 2011 build targeted LÖVE 0.7; the code has since been ported to the 11.x API.
+## License
 
-## Play in the browser
-
-A web build (LÖVE compiled to WebAssembly via [love.js](https://github.com/Davidobot/love.js)) lives in [`web/`](web/). It needs to be served over HTTP — opening `index.html` over `file://` won't work, browsers block WebAssembly there.
-
-    npm install
-    npm run build      # regenerate web/ from the FotD/ folder
-    npm run serve      # serve web/ at http://localhost:8080
-
-## Running the desktop version
-
-Install [LÖVE 11.x](https://love2d.org) and point it at the game folder:
-
-    love FotD
-
-The original 2011 build targeted LÖVE 0.7; the code has since been ported to the 11.x API.
+MIT License. See `LICENSE` file for details.
