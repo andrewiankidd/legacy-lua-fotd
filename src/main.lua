@@ -336,7 +336,7 @@ local function register_states()
         draw = function()
             local count = table.maxn(intro)
             if introi < count + 1 then
-                love.graphics.draw(intro[introi], 0, 0)
+                draw_fullscreen(intro[introi])
                 if introi < 23 then introi = introi + 1 end
             else
                 GameState.set_state("gameplay")
@@ -370,7 +370,7 @@ local function register_states()
         draw = function()
             local sw, sh = love.graphics.getDimensions()
             local bg = get_image("game/pictures/battle/rbg.png")
-            if bg then love.graphics.draw(bg, 0, 0) end
+            if bg then draw_fullscreen(bg) end
             local portrait = NPC.get("protag") and NPC.get("protag").portrait
             if portrait then love.graphics.draw(portrait, sw * 0.16, sh * 0.17) end
             love.graphics.setFont(Fonts.get("twotrees", 28))
@@ -394,7 +394,7 @@ local function register_states()
         draw = function()
             local sw, sh = love.graphics.getDimensions()
             local bg = get_image("game/pictures/battle/death.png")
-            if bg then love.graphics.draw(bg, 0, 0) end
+            if bg then draw_fullscreen(bg) end
             love.graphics.setColor(unpack(COLOR_DIM))
             love.graphics.setFont(Fonts.get("twotrees", 48))
             love.graphics.printf(playername, 0, sh * 0.33, sw, 'center')
@@ -406,7 +406,7 @@ local function register_states()
         draw = function()
             local sw, sh = love.graphics.getDimensions()
             local bg = get_image("game/pictures/battle/levelup.png")
-            if bg then love.graphics.draw(bg, 0, 0) end
+            if bg then draw_fullscreen(bg) end
             love.graphics.setFont(Fonts.get("twotrees", 48))
             love.graphics.print("HP:" .. RPG.get("hp"), sw * 0.02, sh * 0.08)
             love.graphics.print("LVL:" .. RPG.get("level"), sw * 0.02, sh * 0.2)
