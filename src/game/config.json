@@ -17,6 +17,18 @@
     "default_filter": { "min": "linear", "mag": "nearest" },
     "rpg": { "hp": 10, "dmg": 1, "level": 1, "xp": 0 },
     "fps_limit": 60,
+    "actions": {
+        "move_up":    { "keys": ["up", "w"] },
+        "move_down":  { "keys": ["down", "s"] },
+        "move_left":  { "keys": ["left", "a"] },
+        "move_right": { "keys": ["right", "d"] },
+        "confirm":    { "keys": ["return", "space"] },
+        "cancel":     { "keys": ["escape"] },
+        "pause":      { "keys": ["escape", "p"] },
+        "inventory":  { "keys": ["tab"], "label": "Inventory" },
+        "quest_log":  { "keys": ["q"], "label": "Journal" },
+        "skin_cycle": { "keys": ["home"] }
+    },
     "default_skin": "clean",
     "platform_skins": {
         "desktop": "clean",

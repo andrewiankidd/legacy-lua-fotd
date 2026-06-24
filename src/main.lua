@@ -44,8 +44,6 @@ local COLOR_DIM = {0.5, 0.5, 0.5, 0.5}
 
 local face_layout = Frames.get("4dir_3frame")
 
-Input.bind("quest_log", { keys = {"q"} })
-Input.bind("inventory", { keys = {"tab"} })
 
 -- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 -- Player state (replaces all globals -- passed to movement.lua)
