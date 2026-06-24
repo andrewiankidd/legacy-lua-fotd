@@ -331,6 +331,9 @@ end
 
 local function register_states()
     GameState.register("intro", {
+        update = function(dt)
+            if Input.pressed("confirm") then introi = introi + 1 end
+        end,
         draw = function()
             local count = table.maxn(intro)
             if introi < count + 1 then
@@ -339,9 +342,6 @@ local function register_states()
             else
                 GameState.set_state("gameplay")
             end
-        end,
-        keypressed = function(key)
-            if Input.pressed("confirm") then introi = introi + 1 end
         end,
     })
 
@@ -512,23 +512,24 @@ local function gameplay_update(dt)
             NPC.update_entity(entity, dt, state.calc_x, state.calc_y)
         end
     end
-end
 
-local function gameplay_keypressed(key)
-    if Inventory.keypressed(key) then return end
-    if QuestsModule.keypressed(key) then return end
-    if Dialog.keypressed(key) then return end
-
-    if Input.pressed("pause") or Input.pressed("cancel") then
+    if Dialog.is_active() then
+        if Input.pressed("confirm") then Dialog.advance() end
+        if Input.pressed("cancel") then Dialog.close() end
+    elseif Input.pressed("pause") or Input.pressed("cancel") then
         GameState.set_state("pause")
     elseif Input.pressed("inventory") then Inventory.toggle()
     elseif Input.pressed("quest_log") then QuestsModule.toggle()
     elseif Input.pressed("confirm") then
         if showmsgscreen then showmsgscreen = false
-        elseif interactable_str then
-            interact(interactable_str)
+        elseif interactable_str then interact(interactable_str)
         end
     end
+end
+
+local function gameplay_keypressed(key)
+    if Inventory.keypressed(key) then return end
+    if QuestsModule.keypressed(key) then return end
 end
 
 -- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
