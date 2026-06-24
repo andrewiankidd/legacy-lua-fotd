@@ -16,5 +16,22 @@
     "daynight_start": 50,
     "default_filter": { "min": "linear", "mag": "nearest" },
     "rpg": { "hp": 10, "dmg": 1, "level": 1, "xp": 0 },
-    "fps_limit": 60
+    "fps_limit": 60,
+    "default_skin": "clean",
+    "platform_skins": {
+        "desktop": "clean",
+        "mobile": "gbc"
+    },
+    "orientation_skins": {
+        "portrait": "gbc",
+        "landscape": "gba"
+    },
+    "credits": [
+        "Fear of the Dark",
+        "",
+        "A Tilted Cartridge game",
+        "",
+        "Built with love2d4me",
+        "Powered by LÖVE (love2d.org)"
+    ]
 }
